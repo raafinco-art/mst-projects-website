@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MST Projects">
+  <rect width="64" height="64" rx="14" fill="#0B2A5B"/>
+  <!-- orange sweeping arc -->
+  <path d="M11 37 A21 21 0 0 1 53 25" fill="none" stroke="#F47A14" stroke-width="4" stroke-linecap="round"/>
+  <!-- mountain range -->
+  <path d="M13 44 L25 19 L32 33 L40 17 L51 44 Z" fill="#E4E7EB"/>
+  <path d="M25 19 L29 27 L22 30 Z" fill="#0B2A5B" opacity=".22"/>
+  <!-- processing plant stacks -->
+  <g fill="#C7CDD3">
+    <rect x="42" y="27" width="3.6" height="17" rx="1"/>
+    <rect x="47" y="23" width="4.6" height="21" rx="1"/>
+  </g>
+  <!-- conveyor ground line -->
+  <path d="M12 44 L52 44" stroke="#F47A14" stroke-width="3" stroke-linecap="round"/>
+</svg>
