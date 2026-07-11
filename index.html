@@ -148,6 +148,7 @@ ul{list-style:none}
 .brand-text span{font-family:var(--f-mono);font-size:.56rem;letter-spacing:.24em;color:var(--platinum);text-transform:uppercase;margin-top:3px}
 
 .nav-links{display:flex;align-items:center;gap:2.1rem}
+.nav-mobile-cta{display:none}
 .nav-links a{
   font-family:var(--f-head);font-weight:600;font-size:.82rem;
   letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.86);
@@ -459,14 +460,22 @@ ul{list-style:none}
   .nav-links,.nav-cta .btn{display:none}
   .burger{display:flex}
   .nav-links{
-    position:fixed;inset:0 0 0 auto;width:min(82vw,340px);height:100dvh;
-    flex-direction:column;justify-content:center;gap:1.6rem;
+    position:fixed;inset:0 0 0 auto;width:min(84vw,360px);height:100dvh;
+    flex-direction:column;justify-content:center;gap:1.4rem;
     background:var(--blue-deep);padding:2rem;transform:translateX(105%);
     transition:transform .45s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.4);z-index:110;
+    overflow-y:auto;
   }
   .nav-links.open{transform:none;display:flex}
-  .nav-links a{font-size:1.05rem}
+  .nav-links a{font-size:1.12rem}
   .nav-links a::after{display:none}
+  .nav-mobile-cta{display:inline-flex;margin-top:1rem;font-size:.92rem;padding:1rem 1.7rem}
+  /* Hero: stack content above the stat strip instead of overlapping it */
+  .hero{display:block;min-height:auto}
+  .hero__inner{padding-top:116px;padding-bottom:2.4rem;max-width:none}
+  .hero__stats{position:static}
+  .hero__stats .container{padding-block:1.5rem}
+  .scroll-cue{display:none}
   .about__grid{grid-template-columns:1fr;gap:3.5rem}
   .about__media{max-width:520px}
   .why__grid,.proc-grid{grid-template-columns:1fr 1fr}
@@ -474,16 +483,34 @@ ul{list-style:none}
   .step::after{display:none}
 }
 @media (max-width:680px){
-  .hero__stats .container{grid-template-columns:1fr 1fr;gap:.6rem 1rem}
+  .hero__stats .container{grid-template-columns:1fr 1fr;gap:1rem}
+  .hstat{padding:.6rem .2rem}
   .hstat:nth-child(3){border-left:0;padding-left:0}
   .hstat.brd-reset{border-left:0;padding-left:0}
+  .hstat+.hstat{border-left:0;padding-left:0}
+  .hero__cta{flex-direction:column;align-items:stretch}
+  .hero__cta .btn{width:100%;justify-content:center}
+  .cta__cta{flex-direction:column}
+  .cta__cta .btn{width:100%;justify-content:center}
   .cards{grid-template-columns:1fr}
   .ind-grid{grid-template-columns:1fr 1fr}
   .why__grid,.proc-grid,.vm-grid,.field.row{grid-template-columns:1fr}
   .about__media .badge{position:static;margin-top:1.5rem;max-width:100%}
   .footer__top{grid-template-columns:1fr}
+  .footer__links a{padding:.55rem 0}
+  .footer__bottom{flex-direction:column;align-items:flex-start;gap:.5rem}
   .scroll-cue{display:none}
-  .hstat+.hstat{border-left:0;padding-left:0}
+}
+@media (max-width:420px){
+  .brand-text span{display:none}
+  .brand-text b{font-size:1.12rem}
+  .brand-mark{height:44px}
+  .header.scrolled .brand-mark{height:40px}
+  .hero h1{font-size:clamp(2.15rem,10vw,2.8rem)}
+  .hero__sub{margin:1.3rem 0 1.9rem}
+  .section{padding:64px 0}
+  .ind-grid{grid-template-columns:1fr}
+  .hstat .num{font-size:1.7rem}
 }
 </style>
 </head>
@@ -503,6 +530,7 @@ ul{list-style:none}
       <a href="#industries">Industries</a>
       <a href="#process">Process</a>
       <a href="#contact">Contact</a>
+      <a href="#contact" class="btn nav-mobile-cta">Request a Quote</a>
     </nav>
     <div class="nav-cta">
       <a href="#contact" class="btn">Request a Quote
