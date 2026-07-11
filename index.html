@@ -59,7 +59,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
   font-family:var(--f-body);
@@ -457,16 +457,17 @@ ul{list-style:none}
   .footer__top{grid-template-columns:1fr 1fr}
 }
 @media (max-width:900px){
-  .nav-links,.nav-cta .btn{display:none}
+  .nav-cta .btn{display:none}
   .burger{display:flex}
   .nav-links{
-    position:fixed;inset:0 0 0 auto;width:min(84vw,360px);height:100dvh;
-    flex-direction:column;justify-content:center;gap:1.4rem;
-    background:var(--blue-deep);padding:2rem;transform:translateX(105%);
-    transition:transform .45s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.4);z-index:110;
-    overflow-y:auto;
+    position:fixed;inset:0;display:flex;
+    flex-direction:column;justify-content:center;align-items:center;gap:1.5rem;
+    background:rgba(8,20,45,.975);backdrop-filter:blur(8px);padding:2rem;
+    opacity:0;visibility:hidden;pointer-events:none;transform:scale(.97);
+    transition:opacity .35s var(--ease),transform .4s var(--ease),visibility .35s;
+    z-index:110;overflow-y:auto;
   }
-  .nav-links.open{transform:none;display:flex}
+  .nav-links.open{opacity:1;visibility:visible;pointer-events:auto;transform:none}
   .nav-links a{font-size:1.12rem}
   .nav-links a::after{display:none}
   .nav-mobile-cta{display:inline-flex;margin-top:1rem;font-size:.92rem;padding:1rem 1.7rem}
@@ -967,11 +968,12 @@ ul{list-style:none}
   /* ---- Mobile menu ---- */
   var burger = document.getElementById('burger');
   var navLinks = document.getElementById('navLinks');
-  function closeMenu(){ navLinks.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+  function closeMenu(){ navLinks.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
   burger.addEventListener('click', function(){
     var open = navLinks.classList.toggle('open');
     burger.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
   });
   navLinks.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
 
